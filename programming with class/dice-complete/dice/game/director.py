@@ -1,5 +1,4 @@
-from groupgame.groupcard import groupcard
-
+from game.die import Die
 
 
 class Director:
@@ -20,14 +19,14 @@ class Director:
         Args:
             self (Director): an instance of Director.
         """
-        self.card = []
+        self.dice = []
         self.is_playing = True
         self.score = 0
         self.total_score = 0
 
         for i in range(5):
-            gameover = gameover()
-            self.card.append(gameover)
+            die = Die()
+            self.dice.append(die)
 
     def start_game(self):
         """Starts the game by running the main game loop.
@@ -46,8 +45,8 @@ class Director:
         Args:
             self (Director): An instance of Director.
         """
-        pull_card = input("pull a card? [y/n] ")
-        self.is_playing = (pull_card == "y")
+        roll_dice = input("Roll dice? [y/n] ")
+        self.is_playing = (roll_dice == "y")
        
     def do_updates(self):
         """Updates the player's score.
@@ -58,10 +57,10 @@ class Director:
         if not self.is_playing:
             return 
 
-        for i in range(len(self.)):card
-            game_over = self.card[i]
-            game_over.pull()
-            self.score += game_over.points 
+        for i in range(len(self.dice)):
+            die = self.dice[i]
+            die.roll()
+            self.score += die.points 
         self.total_score += self.score
 
     def do_outputs(self):
@@ -74,10 +73,10 @@ class Director:
             return
         
         values = ""
-        for i in range(len(self.card)):
-            game_over = self.card[i]
-            values += f"{game_over.value} "
+        for i in range(len(self.dice)):
+            die = self.dice[i]
+            values += f"{die.value} "
 
-        print(f"You pulled: {values}")
+        print(f"You rolled: {values}")
         print(f"Your score is: {self.total_score}\n")
         self.is_playing == (self.score > 0)
