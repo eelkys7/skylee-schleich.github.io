@@ -13,7 +13,7 @@
 // Step 5: Add another property named hobbies with a value of an array of your hobbies as strings
 let myInfo = {
     name: 'Skylee JoAnn Schleich',
-    photo: 'images/schleichs.jpg',
+    photo: 'images/family1.jpg',
     favoriteFoods: [
     'chinese food',
     'milk',
